@@ -1,0 +1,19 @@
+<div class="card">
+  <div class="card-header">
+    <div class="text-header">Mettez en location votre équipement</div>
+    </div>
+  <div class="card-body">
+    <%= simple_form_for(@product, url: products_path, method: :post) do |f| %>
+    <%= f.input :name %>
+    <%= f.input :price %>
+    <%= f.input :photos, multiple: true, name: "product[photos][]" %>
+    <div>
+      <%= f.label :description %>
+        <div class="textarea">
+          <%= f.text_area :description %>
+        </div>
+    </div>
+    <input type="submit" class="btn-new" value="Création produit">
+    <% end %>
+  </div>
+</div>

@@ -1,0 +1,18 @@
+<div class="card">
+  <div class="card-header">
+    <div class="text-header">Fiche d'information</div>
+  </div>
+  <div class="card-body">
+    <%= simple_form_for(@product, url: product_path, method: :patch) do |f| %>
+      <%= f.input :name %>
+      <%= f.input :adress %>
+      <%= f.label :price %>
+      <%= f.number_field :price %>
+      <div>
+        <%= f.label :description %>
+        <%= f.text_area :description %>
+      </div>
+      <%= f.button :submit, 'Mettez à jour votre équipement', class: 'btn-edit' %>
+    <% end %>
+  </div>
+</div>
