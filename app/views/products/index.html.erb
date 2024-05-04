@@ -7,8 +7,8 @@
     <% @products.each do |product| %>
       <div class="col-6 mx-auto">
         <%= link_to product_path(product) do %>
-          <%= image_tag '' %>
           <div class="card-category">
+           <%= image_tag product.photos.variant(resize_to_fill: [200, 200]).processed, alt: product.name %>
             <%= product.name %>
             <p>Prix: <%= product.price %>€</p>
           </div>
