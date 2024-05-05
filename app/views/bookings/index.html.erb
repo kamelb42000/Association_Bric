@@ -1,0 +1,24 @@
+<div class="contain">
+  <h1>Dashboard</h1>
+  <div class="section">
+    <h2>Mes équipements réservés</h2>
+    <% @bookings.each do |booking| %>
+      <div class="booking-card">
+        <p class="booking-info">Equipements : <%= booking.stuff.name %></p>
+        <p class="booking-info">DATE : <%= booking.date %></p>
+        <p class="booking-info">Nom : <%= booking.user.first_name %></p>
+        <p class="booking-info">Prix : <%= booking.stuff.price %></p>
+
+        <% if booking.accepted == nil  %>
+          <p>Statut : En attente</p>
+          <%= link_to "Valider la réservation", accept_booking_path(booking), data: {turbo_method: :put}, class: "btn-primary" %>
+
+        <% elsif booking.accepted %>
+          <p>Statut : Acceptée</p>
+        <% else %>
+          <p>Statut : Refusé</p>
+        <% end %>
+
+      </div>
+    <% end %>
+  </div>
