@@ -9,12 +9,25 @@ class BookingsController < ApplicationController
     @booking = Booking.new(booking_params)
     @booking.user_id = current_user.id
     if @booking.save
+      # Marquer le produit comme réservé une fois que la réservation est créée avec succès
+      @booking.product.update(reserved: true)
       redirect_to products_path, notice: "La réservation a été effectuée avec succès."
     else
       render :new, status: :unprocessable_entity
     end
   end
 
+
+  def accept
+    @booking = Booking.find(params[:id])
+    @booking.accepted = true
+
+    if @booking.save
+      redirect_to bookings_path, notice: "La réservation a été validée avec succès"
+    else
+      redirect_to bookings_path
+    end
+  end
 
 
 

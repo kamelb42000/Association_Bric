@@ -1,18 +1,17 @@
 <div class="contain">
   <h1>Dashboard</h1>
   <div class="section">
-    <h2>Mes équipements réservés</h2>
+    <h2>Mes Produits réservés</h2>
     <% @bookings.each do |booking| %>
       <div class="booking-card">
-        <p class="booking-info">Equipements : <%= booking.product.name %></p>
-        <p class="booking-info">DATE : <%= booking.date %></p>
-        <p class="booking-info">Nom : <%= booking.user.first_name %></p>
+        <p class="booking-info">Produit : <%= booking.product.name %></p>
+        <p class="booking-info">Date : <%= booking.date %></p>
         <p class="booking-info">Prix : <%= booking.product.price %></p>
 
+        <!-- création de la logique de réservation -->
         <% if booking.accepted == nil  %>
           <p>Statut : En attente</p>
           <%= link_to "Valider la réservation", accept_booking_path(booking), data: {turbo_method: :put}, class: "btn-primary" %>
-
         <% elsif booking.accepted %>
           <p>Statut : Acceptée</p>
         <% else %>
@@ -22,3 +21,4 @@
       </div>
     <% end %>
   </div>
+</div>
