@@ -1,5 +1,6 @@
 class ProductsController < ApplicationController
   skip_before_action :authenticate_user!
+  before_action :authenticate_user!, only: [:show]
 
   def index
     @products = Product.all
@@ -22,6 +23,8 @@ class ProductsController < ApplicationController
 
   def show
     @product = Product.find(params[:id])
+    @booking = Booking.new
+    @my_product_booked = Booking.joins(:product).where("products.user_id = ?", current_user.id)
   end
 
   def edit
@@ -46,6 +49,6 @@ class ProductsController < ApplicationController
   private
 
   def product_params
-    params.require(:product).permit(:name, :price, :adress, :description, :user_id, photos: [] )
+    params.require(:product).permit(:name, :price, :adress, :description, :user_id, photos: [])
   end
 end

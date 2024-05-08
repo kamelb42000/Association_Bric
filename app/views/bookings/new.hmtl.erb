@@ -1,0 +1,29 @@
+<h1>Nouvelle réservation</h1>
+
+<div class="card">
+  <div class="card-header">
+    <div class="text-header">Nouvelle réservation</div>
+  </div>
+  <div class="card-body">
+<%= simple_form_for @booking, url: stuff_bookings_path(@stuff_id), method: :post do |f| %>
+  <% if @booking.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@booking.errors.count, "error") %> </h2>
+      <ul>
+        <% @booking.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <%= f.input :date %>
+
+
+  <div class="actions">
+    <%= f.button :submit, 'Reserve' %>
+  </div>
+<% end %>
+     <input type="submit" class="btn" value="submit">    </form>
+  </div>
+</div>

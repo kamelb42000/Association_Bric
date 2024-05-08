@@ -4,10 +4,10 @@
     <h2>Mes équipements réservés</h2>
     <% @bookings.each do |booking| %>
       <div class="booking-card">
-        <p class="booking-info">Equipements : <%= booking.stuff.name %></p>
+        <p class="booking-info">Equipements : <%= booking.product.name %></p>
         <p class="booking-info">DATE : <%= booking.date %></p>
         <p class="booking-info">Nom : <%= booking.user.first_name %></p>
-        <p class="booking-info">Prix : <%= booking.stuff.price %></p>
+        <p class="booking-info">Prix : <%= booking.product.price %></p>
 
         <% if booking.accepted == nil  %>
           <p>Statut : En attente</p>
