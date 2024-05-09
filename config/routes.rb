@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   resources :bookings do
     member do
       put :accept
+      put :refuse
     end
   end
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html

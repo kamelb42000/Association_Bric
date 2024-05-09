@@ -1,6 +1,6 @@
 class ProductsController < ApplicationController
   skip_before_action :authenticate_user!
-  before_action :authenticate_user!, only: [:show]
+  before_action :authenticate_user!, only: [:show, :create, :new]
 
   def index
     @products = Product.where(reserved: false)

@@ -9,14 +9,15 @@
         <p class="booking-info">Prix : <%= booking.product.price %></p>
 
         <!-- création de la logique de réservation -->
-        <% if booking.accepted == nil  %>
-          <p>Statut : En attente</p>
-          <%= link_to "Valider la réservation", accept_booking_path(booking), data: {turbo_method: :put}, class: "btn-primary" %>
-        <% elsif booking.accepted %>
-          <p>Statut : Acceptée</p>
-        <% else %>
-          <p>Statut : Refusé</p>
-        <% end %>
+          <% if booking.accepted.nil? %>
+            <p>Statut : En attente</p>
+            <%= link_to "Valider la réservation", accept_booking_path(booking), data: { turbo_method: :put }, class: "btn-primary" %>
+            <%= link_to "Refuser la réservation", refuse_booking_path(booking), data: { turbo_method: :put }, class: "btn-primary" %>
+          <% elsif booking.accepted %>
+            <p>Statut : Acceptée</p>
+          <% else %>
+            <p>Statut : Refusée</p>
+          <% end %>
 
       </div>
     <% end %>

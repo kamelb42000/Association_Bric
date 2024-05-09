@@ -21,7 +21,6 @@ class BookingsController < ApplicationController
   def accept
     @booking = Booking.find(params[:id])
     @booking.accepted = true
-
     if @booking.save
       redirect_to bookings_path, notice: "La réservation a été validée avec succès"
     else
@@ -29,6 +28,11 @@ class BookingsController < ApplicationController
     end
   end
 
+  def refuse
+    @booking = Booking.find(params[:id])
+    @booking.update(accepted: false)
+    redirect_to bookings_path, notice: "La réservationn'a pas été validée"
+  end
 
 
   private
