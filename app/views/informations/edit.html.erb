@@ -1,0 +1,15 @@
+<div class="card">
+  <div class="card-header">
+    <div class="text-header">Fiche d'information</div>
+  </div>
+  <div class="card-body">
+    <%= simple_form_for(@information, url: information_path, method: :patch) do |f| %>
+      <%= f.input :title %>
+      <div>
+        <%= f.label :description %>
+        <%= f.text_area :description %>
+      </div>
+      <%= f.button :submit, 'Mettez à jour votre Article', class: 'btn-edit' %>
+    <% end %>
+  </div>
+</div>

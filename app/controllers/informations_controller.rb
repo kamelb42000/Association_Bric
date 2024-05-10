@@ -6,6 +6,10 @@ class InformationsController < ApplicationController
     @informations = Information.all
   end
 
+  def show
+    @information = Information.find(params[:id])
+  end
+
   def new
     @information = Information.new
   end
@@ -20,6 +24,26 @@ class InformationsController < ApplicationController
       render :new, status: :unprocessable_entity
     end
   end
+
+  def edit
+    @information = Information.find(params[:id])
+  end
+
+  def update
+    @information = Information.find(params[:id])
+    if @information.update(information_params)
+    redirect_to informations_path(@informations), flash: {alert: "L'article a été modifié avec succès"}
+    else
+      render :edit
+    end
+  end
+
+  def destroy
+    @information = Information.find(params[:id])
+    @information.destroy
+    redirect_to informations_path, status: :see_other
+  end
+
 
   private
 

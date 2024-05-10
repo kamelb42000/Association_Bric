@@ -3,7 +3,9 @@
 
 <% @informations.each do |information| %>
   <div>
+  <%= link_to information_path(information) do %>
     <h2><%= information.title %></h2>
     <p><%= information.description %></p>
+    <% end %>
   </div>
 <% end %>
