@@ -1,0 +1,17 @@
+<div class="card">
+  <div class="card-header">
+  <div class="text-header">Ecrivez votre nouvelle article</div>
+    </div>
+  <div class="card-body">
+    <%= simple_form_for(@information, url: informations_path, method: :post) do |f| %>
+    <%= f.input :title %>
+    <div>
+      <%= f.label :description %>
+        <div class="textarea">
+          <%= f.text_area :description %>
+        </div>
+    </div>
+    <input type="submit" class="btn-new" value="Création d'article">
+    <% end %>
+  </div>
+</div>

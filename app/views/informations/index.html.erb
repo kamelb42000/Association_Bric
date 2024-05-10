@@ -1,0 +1,9 @@
+<h1>Liste des informations</h1>
+  <%= link_to "Ajouter un nouvelle article", new_information_path, class: "btn_index" %>
+
+<% @informations.each do |information| %>
+  <div>
+    <h2><%= information.title %></h2>
+    <p><%= information.description %></p>
+  </div>
+<% end %>
