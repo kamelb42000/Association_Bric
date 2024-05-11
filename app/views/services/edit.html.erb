@@ -1,0 +1,14 @@
+<div class="card">
+  <div class="card-header">
+    <div class="text-header">Fiche d'information</div>
+  </div>
+  <div class="card-body">
+    <%= simple_form_for(@service, url: service_path, method: :patch) do |f| %>
+      <%= f.input :date %>
+      <div>
+        <%= f.label :phone_number %>
+      </div>
+      <%= f.button :submit, 'Mettez à jour votre Réservation', class: 'btn-edit' %>
+    <% end %>
+  </div>
+</div>

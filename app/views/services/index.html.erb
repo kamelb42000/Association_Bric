@@ -1,0 +1,12 @@
+<div class="mb">
+  <h3>Services</h3>
+  <%= link_to "Ajouter un nouveau produit", new_service_path, class: "btn_index" %>
+</div>
+
+<% @services.each do |service| %>
+  <div>
+  <%= link_to service_path(service) do %>
+    <h2><%= service.date %></h2>
+    <% end %>
+  </div>
+<% end %>

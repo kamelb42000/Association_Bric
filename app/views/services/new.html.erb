@@ -1,0 +1,13 @@
+<div class="card">
+  <div class="card-header">
+  <div class="text-header">Nouvelle Réservvation</div>
+    </div>
+  <div class="card-body">
+    <%= simple_form_for(@service, url: services_path, method: :post) do |f| %>
+    <%= f.input :date %>
+    <%= f.input :phone_number %>
+
+    <input type="submit" class="btn-new" value="Création d'une nouvelle réservation">
+    <% end %>
+  </div>
+</div>
