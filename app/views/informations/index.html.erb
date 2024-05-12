@@ -1,11 +1,14 @@
 <h1>Liste des informations</h1>
-  <%= link_to "Ajouter un nouvelle article", new_information_path, class: "btn_index" %>
+<%= link_to "Ajouter un nouvel article", new_information_path, class: "btn_index" %>
 
 <% @informations.each do |information| %>
   <div>
-  <%= link_to information_path(information) do %>
-    <h2><%= information.title %></h2>
-    <p><%= information.description %></p>
+    <%= link_to information_path(information) do %>
+      <h2><%= information.title %></h2>
+      <% if information.photos.attached? %>
+        <%= image_tag information.photos.variant(resize_to_fill: [200, 200]).processed, alt: information.title %>
+      <% end %>      <p><%= information.description %></p>
+      </div>
     <% end %>
   </div>
 <% end %>

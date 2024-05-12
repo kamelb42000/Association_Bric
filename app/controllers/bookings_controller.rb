@@ -1,7 +1,7 @@
 class BookingsController < ApplicationController
 
   def index
-    @bookings = Booking.all
+    @bookings = Booking.all.order(date: :desc) # Trie les réservations par ordre descendant de date
     @my_product_booked = Booking.joins(:product).where("products.user_id = ?", current_user.id)
   end
 
@@ -14,7 +14,7 @@ class BookingsController < ApplicationController
       @booking.product.update(reserved: true)
       redirect_to products_path, notice: "La réservation a été effectuée avec succès."
     else
-      render :new, status: :unprocessable_entity
+      redirect_to products_path(@products), flash: {alert: "Action impossible, Vous ne pouvezréservez que 2 produits à la fois"}
     end
   end
 
@@ -32,7 +32,7 @@ class BookingsController < ApplicationController
   def refuse
     @booking = Booking.find(params[:id])
     @booking.update(accepted: false)
-    redirect_to bookings_path, notice: "La réservationn'a pas été validée"
+    redirect_to bookings_path, notice: "La réservation'a pas été validée"
   end
 
 

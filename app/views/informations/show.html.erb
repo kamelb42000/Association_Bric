@@ -1,6 +1,8 @@
 <div class="card">
   <div class="card-header">
     <div class="card-body">
+<!-- photo et information -->
+      <%= image_tag @information.photos.variant(resize_to_fill: [200, 200]).processed, alt: @information.title %>
       <h1><%= @information.title %></h1>
       <p>Description: <%= @information.description %></p>
 

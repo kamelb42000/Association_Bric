@@ -5,6 +5,7 @@
   <div class="card-body">
     <%= simple_form_for(@information, url: information_path, method: :patch) do |f| %>
       <%= f.input :title %>
+      <%= f.input :photos, multiple: true, name: "product[photos][]" %>
       <div>
         <%= f.label :description %>
         <%= f.text_area :description %>

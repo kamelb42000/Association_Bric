@@ -2,23 +2,13 @@ class Booking < ApplicationRecord
   belongs_to :user
   belongs_to :product
 
+  validate :check_user_bookings_limit, on: :create
+
   private
 
-  def user_cannot_be_owner
-    if user == product.user
-      errors.add(:user, "le propriétaire du produit ne peut pas le réserver")
-    end
-  end
-
-  def user_only_booked_one_product
-    if user.bookings.any?
-      errors.add(:user, "l'utilisateur ne peut réserver qu'un produit à la fois")
-    end
-  end
-
-  def user_can_book_again
-    if user.bookings.accepted.any?
-      errors.add(:user, "l'utilisateur ne peut pas réserver un nouveau produit tant que sa réservation actuelle est acceptée")
+  def check_user_bookings_limit
+    if user.bookings.where(accepted: nil).count >= 2
+      errors.add(:base, "Vous ne pouvez pas réserver plus de deux produits à la fois.")
     end
   end
 
