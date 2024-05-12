@@ -1,9 +1,10 @@
 <div class="card">
-  <div class="card-header">
-    <div class="card-body">
-      <h1><%= @product.name %></h1>
-      <p>Prix: <%= @product.price %></p>
-      <p>Description: <%= @product.description %></p>
+<div class="card-header">
+  <div class="card-body">
+    <%= image_tag @product.photos.variant(resize_to_fill: [200, 200]).processed, alt: @product.name %>
+    <h1><%= @product.name %></h1>
+    <p>Prix: <%= @product.price %></p>
+    <p>Description: <%= @product.description %></p>
 
 <!--bouton réservation   -->
       <%= form_with(model: @booking, url: product_bookings_path(@product), method: :post) do |form| %>

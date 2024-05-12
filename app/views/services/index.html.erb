@@ -7,6 +7,9 @@
   <div>
   <%= link_to service_path(service) do %>
     <h2><%= service.date %></h2>
+    <h2><%= service.first_name %></h2>
+    <h2><%= service.last_name %></h2>
+    <h2><%= service.address %></h2>
     <% end %>
   </div>
 <% end %>

@@ -5,7 +5,7 @@
     <% @bookings.each do |booking| %>
       <div class="booking-card">
         <p class="booking-info">Produit : <%= booking.product.name %></p>
-        <p class="booking-info">Date : <%= booking.date %></p>
+        <p class="booking-info">Date de la demande: <%= booking.date %></p>
         <p class="booking-info">Prix : <%= booking.product.price %></p>
 
         <!-- création de la logique de réservation -->

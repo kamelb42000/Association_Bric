@@ -4,9 +4,13 @@
   </div>
   <div class="card-body">
     <%= simple_form_for(@service, url: service_path, method: :patch) do |f| %>
-      <%= f.input :date %>
       <div>
-        <%= f.label :phone_number %>
+        <%= f.input :first_name %>
+        <%= f.input :last_name %>
+        <%= f.input :address %>
+        <%= f.input :date %>
+        <%= f.input :phone_number %>
+        <%= f.input :description %>
       </div>
       <%= f.button :submit, 'Mettez à jour votre Réservation', class: 'btn-edit' %>
     <% end %>

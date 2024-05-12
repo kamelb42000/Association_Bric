@@ -2,7 +2,12 @@
   <div class="card-header">
     <div class="card-body">
       <h1><%= @service.date %></h1>
-      <p>Réservation: <%= @service.date %></p>
+      <p>date de la réservation: <%= @service.date %></p>
+      <p>Nom du demandeur: <%= @service.last_name %></p>
+      <p>prenom du demandeur: <%= @service.first_name %></p>
+      <p>Adresse débrassage: <%= @service.address %></p>
+      <p>numéro de téléphone: <%= @service.phone_number %></p>
+      <p>Description de la demandeur: <%= @service.description %></p>
 
   <!-- création du bouton edit -->
       <div class="btn-show2">

@@ -9,8 +9,8 @@
         <%= link_to product_path(product) do %>
           <div class="card-category">
            <%= image_tag product.photos.variant(resize_to_fill: [200, 200]).processed, alt: product.name %>
-            <%= product.name %>
-            <p>Prix: <%= product.price %>€</p>
+              <p>Produit: <%= product.name %></p>
+              <p>Prix: <%= product.price %></p>
           </div>
         <% end %>
       </div>

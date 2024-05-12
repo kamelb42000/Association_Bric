@@ -8,6 +8,7 @@ class BookingsController < ApplicationController
   def create
     @booking = Booking.new(booking_params)
     @booking.user_id = current_user.id
+    @booking.date = Date.today
     if @booking.save
       # Marquer le produit comme réservé une fois que la réservation est créée avec succès
       @booking.product.update(reserved: true)

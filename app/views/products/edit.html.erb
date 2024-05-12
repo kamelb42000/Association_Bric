@@ -4,7 +4,8 @@
   </div>
   <div class="card-body">
     <%= simple_form_for(@product, url: product_path, method: :patch) do |f| %>
-      <%= f.input :name %>
+    <%= f.input :name %>
+    <%= image_tag @product.photos.variant(resize_to_fill: [200, 200]).processed, alt: @product.name %>
       <%= f.input :adress %>
       <%= f.label :price %>
       <%= f.number_field :price %>
