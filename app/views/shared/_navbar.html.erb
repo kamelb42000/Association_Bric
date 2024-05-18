@@ -4,16 +4,35 @@
       <%= image_tag "https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/logo.png" %>
     <% end %>
 
+<!-- création d'un bouton toggle -->
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
 
+    <!-- boutton nav-bar-->
+      <div class="btn-nav-bar">
+        <%= link_to "Qui sommes- Nous", informations_path(@information)%>
+      </div>
+      <div class="btn-nav-bar">
+        <%= link_to "Nos produits", products_path(@products)%>
+      </div>
+      <div class="btn-nav-bar">
+        <%= link_to "Nos Services", services_path(@services)%>
+      </div>
+
+
+    <!-- boutton collapse au moment de l'authentification-->
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto">
         <% if user_signed_in? %>
-          <li class="nav-item active">
-            <%= link_to "Home", "#", class: "nav-link" %>
-          </li>
+          <div class="btn-nav-bar">
+            <%= link_to "Mes réservations", bookings_path(@bookings)%>
+         </div>
+          <div>
+            <li class="nav-item active">
+              <%= link_to "Home", root_path, class: "nav-link" %>
+            </li>
+          </div>
           <li class="nav-item">
             <%= link_to "Messages", "#", class: "nav-link" %>
           </li>

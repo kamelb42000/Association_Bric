@@ -57,6 +57,7 @@ gem "sassc-rails"
 gem "cloudinary"
 gem 'image_processing', '~> 1.2'
 gem 'mini_magick'
+gem 'pundit'
 
 group :development, :test do
   gem "dotenv-rails"
