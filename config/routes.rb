@@ -17,6 +17,16 @@ Rails.application.routes.draw do
 
   resources :services
 
+  resources :members
+  resources :products do
+    resources :bookings, only: [:create, :index, :show, :update, :destroy] do
+      member do
+        patch :accept
+        patch :refuse
+      end
+    end
+  end
+
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Defines the root path route ("/")

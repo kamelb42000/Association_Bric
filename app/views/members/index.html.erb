@@ -1,0 +1,36 @@
+<h1>Liste des adhérents</h1>
+
+<%= link_to "Ajouter un nouvel adhérent", new_member_path, class: "btn btn-primary" %>
+
+<table>
+  <thead>
+    <tr>
+      <th>Photo</th>
+      <th>Numéro Adhérent</th>
+      <th>Nom</th>
+      <th>Prénom</th>
+      <th>Adresse</th>
+      <th>Téléphone</th>
+      <th>Email</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @members.each do |member| %>
+      <tr>
+        <td><%= image_tag member.photo if member.photo.attached? %></td>
+        <td><%= member.membership_number %></td>
+        <td><%= member.first_name %></td>
+        <td><%= member.last_name %></td>
+        <td><%= member.address %></td>
+        <td><%= member.phone_number %></td>
+        <td><%= member.email %></td>
+        <td>
+          <%= link_to 'Voir', member_path(member) %>
+          <%= link_to 'Modifier', edit_member_path(member) %>
+          <%= link_to 'Supprimer', member_path(member), method: :delete, data: { confirm: "Êtes-vous sûr ?" } %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
