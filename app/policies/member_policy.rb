@@ -4,7 +4,7 @@ class MemberPolicy < ApplicationPolicy
   end
 
   def show?
-    user.admin? || user == record.user
+    user.admin?
   end
 
   def create?

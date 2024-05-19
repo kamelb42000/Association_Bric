@@ -4,11 +4,15 @@ class MembersController < ApplicationController
 
   def index
     @members = Member.all
+    @bookings = Booking.all
+    @services = Service.all
     authorize @members
   end
 
   def show
     @member = Member.find(params[:id])
+    @bookings = Booking.none
+    @services = Service.none
     authorize @member
   end
 
@@ -45,8 +49,11 @@ class MembersController < ApplicationController
   def destroy
     @member = Member.find(params[:id])
     authorize @member
-    @member.destroy
-    redirect_to members_path, status: :see_other
+    if @member.destroy
+      redirect_to members_path, notice: "L'adhérent a été supprimé avec succès.", status: :see_other
+    else
+      redirect_to members_path, alert: "La suppression de l'adhérent a échoué."
+    end
   end
 
   private

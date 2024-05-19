@@ -27,10 +27,60 @@
         <td><%= member.email %></td>
         <td>
           <%= link_to 'Voir', member_path(member) %>
-          <%= link_to 'Modifier', edit_member_path(member) %>
-          <%= link_to 'Supprimer', member_path(member), method: :delete, data: { confirm: "Êtes-vous sûr ?" } %>
         </td>
       </tr>
     <% end %>
   </tbody>
 </table>
+
+<h2>Réservations</h2>
+<% if @bookings.any? %>
+  <table>
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Utilisateur</th>
+        <th>Produit</th>
+        <th>Date</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @bookings.each do |booking| %>
+        <tr>
+          <td><%= booking.id %></td>
+          <td><%= booking.user.email %></td>
+          <td><%= booking.product.name %></td>
+          <td><%= booking.date %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+<% else %>
+  <p>Aucune réservation trouvée.</p>
+<% end %>
+
+<h2>Services</h2>
+<% if @services.any? %>
+  <table>
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Utilisateur</th>
+        <th>Service</th>
+        <th>Date</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @services.each do |service| %>
+        <tr>
+          <td><%= service.id %></td>
+          <td><%= service.user.email %></td>
+          <td><%= service.name %></td>
+          <td><%= service.date %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+<% else %>
+  <p>Aucun service trouvé.</p>
+<% end %>
