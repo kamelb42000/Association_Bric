@@ -9,6 +9,12 @@
       <p>numéro de téléphone: <%= @service.phone_number %></p>
       <p>Description de la demandeur: <%= @service.description %></p>
 
+      <p>Statut de la réservation : <%= @service.status %></p>
+      <% if current_user.admin? %>
+        <%= button_to "Valider", validate_service_path(@service), method: :put %>
+        <%= button_to "Refuser", refuse_service_path(@service), method: :put %>
+      <% end %>
+
   <!-- création du bouton edit -->
       <div class="btn-show2">
         <%= link_to "Edit", edit_service_path(@service)%>

@@ -29,7 +29,7 @@ class ServicesController < ApplicationController
   def update
     @service = Service.find(params[:id])
     if @service.update(service_params)
-    redirect_to services_path(@services), flash: {alert: "La réservation a été modifié avec succès"}
+      redirect_to services_path, flash: {alert: "La réservation a été modifiée avec succès"}
     else
       render :edit
     end
@@ -39,6 +39,26 @@ class ServicesController < ApplicationController
     @service = Service.find(params[:id])
     @service.destroy
     redirect_to services_path, status: :see_other
+  end
+
+  def validate
+    @service = Service.find(params[:id])
+    authorize @service, :validate?  # Utilise la méthode validate? de la politique
+    if @service.update(status: "Accepté")
+      redirect_to @service, notice: "La réservation a été acceptée avec succès."
+    else
+      redirect_to @service, alert: "La réservation n'a pas pu être acceptée."
+    end
+  end
+
+  def refuse
+    @service = Service.find(params[:id])
+    authorize @service, :refuse?
+    if @service.update(status: "Refusé")
+      redirect_to @service, notice: "La réservation a été refusée avec succès."
+    else
+      redirect_to @service, alert: "Le refus a échoué."
+    end
   end
 
 

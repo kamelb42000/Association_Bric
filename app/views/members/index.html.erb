@@ -85,8 +85,12 @@
         <tr>
           <td><%= service.id %></td>
           <td><%= service.user.email %></td>
-          <td><%= service.name %></td>
+          <td><%= service.first_name %></td>
+          <td><%= service.last_name %></td>
+          <td><%= service.address %></td>
+          <td><%= service.phone_number %></td>
           <td><%= service.date %></td>
+          <td><%= link_to "voir la demande de réservation", service_path(service), class: "btn_index" %></td>
         </tr>
       <% end %>
     </tbody>
