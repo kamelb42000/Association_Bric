@@ -1,0 +1,21 @@
+<div class="card">
+  <div class="card-header">
+    <div class="text-header">Modifier l'adhérent</div>
+  </div>
+  <div class="card-body">
+    <%= simple_form_for(@member, url: member_path(@member), method: :patch, html: { class: 'form-horizontal' }) do |form| %>
+      <%= form.input :first_name, label: "Prénom" %>
+      <%= form.input :last_name, label: "Nom" %>
+      <%= form.input :address, label: "Adresse" %>
+      <%= form.input :phone_number, label: "Téléphone" %>
+      <%= form.input :email %>
+      <%= form.input :membership_number, label: "Numéro Adhérent" %>
+      <%= form.input :date, label: "Date d'adhésion" %>
+      <%= form.input :photo, label: "Photo" %>
+
+      <%= form.button :submit, 'Mettre à jour', class: 'btn btn-edit' %>
+    <% end %>
+  </div>
+</div>
+
+<%= link_to 'Retour', members_path, class: 'btn btn-secondary' %>

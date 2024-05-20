@@ -10,7 +10,9 @@
 <p><strong>Numéro Adhérent:</strong> <%= @member.membership_number %></p>
 
 <%= link_to 'Modifier', edit_member_path(@member) %>
-<%= link_to 'Supprimer', member_path(@member), method: :delete, data: { confirm: "Êtes-vous sûr ?" } %>
+<%= form_with model: @member, method: :delete, data: { confirm: 'Êtes-vous sûr de vouloir supprimer cet adhérent ?' }, class: 'inline-form' do %>
+  <%= submit_tag 'Supprimer' %>
+<% end %>
 
 <h2>Réservations</h2>
 <% if @bookings.any? %>
