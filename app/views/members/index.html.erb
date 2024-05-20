@@ -42,6 +42,8 @@
         <th>Utilisateur</th>
         <th>Produit</th>
         <th>Date</th>
+        <th>Status</th> <!-- Ajout de la colonne Statut -->
+        <th>Actions</th> <!-- Ajout de la colonne Actions -->
       </tr>
     </thead>
     <tbody>
@@ -51,6 +53,14 @@
           <td><%= booking.user.email %></td>
           <td><%= booking.product.name %></td>
           <td><%= booking.date %></td>
+          <td>
+            <strong>Status de la réservation:</strong>
+            <%= booking.accepted.nil? ? "En attente" : (booking.accepted ? "Acceptée" : "Refusée") %>
+          </td>
+          <td>
+            <%= link_to "Voir la réservation", booking_path(booking) %>
+            <!-- Ajouter d'autres actions si nécessaire -->
+          </td>
         </tr>
       <% end %>
     </tbody>

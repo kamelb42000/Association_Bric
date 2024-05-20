@@ -7,6 +7,6 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   def admin?
-    self.admin
+    self.admin == true
   end
 end

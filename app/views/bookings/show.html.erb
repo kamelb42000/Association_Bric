@@ -1,0 +1,31 @@
+<h1>Réservation <%= @booking.id %></h1>
+<p>
+  <strong>Utilisateur :</strong>
+  <%= @booking.user.email %>
+</p>
+<p>
+  <strong>Produit :</strong>
+  <%= @booking.product.name %>
+</p>
+<p>
+  <strong>Date :</strong>
+  <%= @booking.date %>
+</p>
+<p>
+  <strong>Statut :</strong>
+  <% if @booking.accepted.nil? %>
+    En attente
+  <% elsif @booking.accepted %>
+    Acceptée
+  <% else %>
+    Refusée
+  <% end %>
+</p>
+
+<%= button_to "Valider la réservation", accept_booking_path(@booking), method: :put, data: { turbo_method: :put }, class: "btn-primary" %>
+<%= button_to "Refuser la réservation", refuse_booking_path(@booking), method: :put, data: { turbo_method: :put }, class: "btn-primary" %>
+
+<p>
+  <strong>Status:</strong>
+  <%= @booking.accepted.nil? ? "En attente" : (@booking.accepted ? "Acceptée" : "Refusée") %>
+</p>

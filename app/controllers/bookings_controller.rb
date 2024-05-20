@@ -1,5 +1,6 @@
 class BookingsController < ApplicationController
   before_action :authenticate_user!
+  before_action :set_booking, only: [:show, :accept, :refuse]
   include Pundit
 
   def index
@@ -19,23 +20,36 @@ class BookingsController < ApplicationController
     end
   end
 
-  def accept
+  def show
     @booking = Booking.find(params[:id])
+  end
+
+
+  def accept
     authorize @booking, :accept?
-    @booking.update(accepted: true)
-    redirect_to bookings_path, notice: "La réservation a été validée avec succès"
+    if @booking.update(accepted: true)
+      redirect_to @booking, notice: "La réservation a été validée avec succès"
+    else
+      redirect_to @booking, alert: "La validation a échoué"
+    end
   end
 
   def refuse
-    @booking = Booking.find(params[:id])
     authorize @booking, :refuse?
-    @booking.update(accepted: false)
-    redirect_to bookings_path, notice: "La réservation n'a pas été validée"
+    if @booking.update(accepted: false)
+      redirect_to @booking, notice: "La réservation a été refusée avec succès"
+    else
+      redirect_to @booking, alert: "Le refus a échoué"
+    end
   end
 
   private
 
   def booking_params
     params.require(:booking).permit(:date, :user_id, :product_id, :product)
+  end
+
+  def set_booking
+    @booking = Booking.find(params[:id])
   end
 end

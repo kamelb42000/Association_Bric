@@ -61,4 +61,8 @@ class MembersController < ApplicationController
   def member_params
     params.require(:member).permit(:first_name, :last_name, :address, :phone_number, :email, :membership_number, :photo)
   end
+
+  def set_user
+    @user = current_user
+  end
 end

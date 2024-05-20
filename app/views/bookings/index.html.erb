@@ -11,8 +11,8 @@
         <!-- création de la logique de réservation -->
           <% if booking.accepted.nil? %>
             <p>Statut : En attente</p>
-            <%= link_to "Valider la réservation", accept_booking_path(booking), data: { turbo_method: :put }, class: "btn-primary" %>
-            <%= link_to "Refuser la réservation", refuse_booking_path(booking), data: { turbo_method: :put }, class: "btn-primary" %>
+              <%= link_to "Valider la réservation", accept_booking_path(booking), method: :put, data: { turbo_method: :put }, class: "btn-primary" %>
+              <%= link_to "Refuser la réservation", refuse_booking_path(booking), method: :put, data: { turbo_method: :put }, class: "btn-primary" %>
           <% elsif booking.accepted %>
             <p>Statut : Acceptée</p>
           <% else %>

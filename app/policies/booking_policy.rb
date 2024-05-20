@@ -1,10 +1,10 @@
 class BookingPolicy < ApplicationPolicy
   def accept?
-    user.admin?
+    user.admin? || record.user == user
   end
 
   def refuse?
-    user.admin?
+    user.admin? || record.user == user
   end
 
   class Scope < Scope

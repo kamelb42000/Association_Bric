@@ -1,7 +1,7 @@
 class Booking < ApplicationRecord
   belongs_to :user
   belongs_to :product
-  belongs_to :member
+
 
   validate :check_user_bookings_limit, on: :create
 
